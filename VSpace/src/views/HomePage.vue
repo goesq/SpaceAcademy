@@ -177,7 +177,6 @@ export default {
 </style>
 
 <style>
-/* Estilos globais */
 * {
   margin: 0;
   padding: 0;

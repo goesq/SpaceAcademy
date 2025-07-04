@@ -7,7 +7,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import HomePage from './views/HomePage.vue'
 import LoginPage from './views/LoginPage.vue'
-import PrincipalPage from './views/PrincipalPage.vue' // Importação adicionada
+import PrincipalPage from './views/PrincipalPage.vue' 
+
 
 const routes = [
   {
@@ -18,13 +19,14 @@ const routes = [
   {
     path: '/login',
     name: 'LoginPage',
-    component: LoginPage
+    component: LoginPage,
+    meta: { title: 'Login - Space Academy' }
   },
   {
-    path: '/principal', // Você pode alterar o path conforme necessário
+    path: '/principal',
     name: 'PrincipalPage',
     component: PrincipalPage,
-    // meta: { requiresAuth: true } // Descomente se precisar de autenticação
+    meta: { title: 'Home - Space Academy', requiresAuth: true } 
   }
 ]
 
@@ -32,6 +34,16 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+interface RouteMeta {
+  title?: string;
+}
+
+router.afterEach((to) => {
+  const meta = to.meta as RouteMeta;
+  document.title = meta.title || 'Space Academy';
+});
+
 
 createApp(App)
   .use(router)

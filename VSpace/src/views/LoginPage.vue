@@ -38,6 +38,7 @@
         </div>
       </div>
     </div>
+      <router-link to="/" class="backpage"><strong>← Voltar</strong></router-link>
   </div>
   <footer class="footer">
       <div class="footer-content">
@@ -194,6 +195,16 @@ export default {
   text-decoration: underline;
 }
 
+.backpage {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  text-align: left;
+  font-size: 0.8rem;
+  margin-left: 12px;
+  display: flex;
+}
+
 .footer {
   background: transparent;
   padding: 15px 0;
@@ -233,5 +244,44 @@ export default {
 .footer-copyright {
   color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
+} 
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 250px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-info {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .access-button {
+    width: 180px;
+    height: 55px;
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+
+  .footer-logo-img {
+    max-height: 30px;
+  }
+
+  .footer-email {
+    font-size: 12px;
+  }
+
+  .footer-copyright {
+    font-size: 10px;
+  }
 }
 </style>
