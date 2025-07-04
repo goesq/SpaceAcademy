@@ -1,22 +1,33 @@
 <template>
-  <div class="login-page">
+  <div class="register-page">
     <NavbarSimples />
-    <div class="login-container">
-      <div class="login-box">
-        <h2 class="login-title">Acesse sua conta</h2>
+    <div class="register-container">
+      <div class="register-box">
+        <h2 class="register-title">Crie sua conta</h2>
         
-        <form @submit.prevent="handleLogin" class="login-form">
+        <form @submit.prevent="handleRegister" class="register-form">
           <div class="input-group">
-            <label for="email">E-mail</label>
+            <label for="username">Usuário</label>
             <input
-              id="email"
-              v-model="email"
+              id="username"
+              v-model="username"
               type="text"
-              placeholder="Digite seu e-mail"
+              placeholder="Escolha seu usuário"
               required
             />
           </div>
           
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              v-model="email"
+              type="email"
+              placeholder="Digite seu email"
+              required
+            />
+          </div>
+
           <div class="input-group">
             <label for="password">Senha</label>
             <input
@@ -27,59 +38,83 @@
               required
             />
           </div>
+
+          <div class="input-group">
+            <label for="confirmPassword">Confirme a senha</label>
+            <input
+              id="confirmPassword"
+              v-model="confirmPassword"
+              type="password"
+              placeholder="Confirme sua senha"
+              required
+            />
+          </div>
           
-          <button type="submit" class="login-button">Entrar</button>
+          <button type="submit" class="register-button">Cadastrar</button>
         </form>
-        
-        <div class="login-footer">
-          <router-link to="/register" class="create-account">Não tem cadastro? Criar conta</router-link>
+      </div>
+    </div>
+    <router-link to="/login" class="backpage"><strong>← Voltar</strong></router-link>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="../assets/images/SpaceA.png" alt="Logo" class="footer-logo-img" />
+      </div>
+      <div class="footer-info">
+        <a href="mailto:contato@spaceademy.com" class="footer-email">contato@spaceacademy.com</a>
+        <div class="footer-copyright">
+          &copy; 2025 SpaceAcademy - Todos os direitos reservados.
         </div>
       </div>
     </div>
-      <router-link to="/" class="backpage"><strong>← Voltar</strong></router-link>
-  </div>
-  <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="../assets/images/SpaceA.png" alt="Logo" class="footer-logo-img" />
-        </div>
-        <div class="footer-info">
-          <a href="mailto:contato@spaceademy.com" class="footer-email">contato@spaceacademy.com</a>
-          <div class="footer-copyright">
-            &copy; 2025 SpaceAcademy - Todos os direitos reservados.
-          </div>
-        </div>
-      </div>
-    </footer>
+  </footer>
 </template>
 
 <script>
 import NavbarSimples from '@/components/NavbarSimples.vue'
 
 export default {
-  name: 'LoginPage',
+  name: 'RegisterPage',
   components: {
     NavbarSimples
   },
   data() {
     return {
       username: '',
-      password: ''
+      email: '',
+      password: '',
+      confirmPassword: ''
     }
   },
   methods: {
-    handleLogin() {
-      console.log('Tentativa de login:', {
+    handleRegister() {
+      if (this.password !== this.confirmPassword) {
+        alert("As senhas não coincidem!");
+        return;
+      }
+
+      // Aqui você pode chamar sua API para registrar o usuário
+      console.log('Tentativa de cadastro:', {
         username: this.username,
+        email: this.email,
         password: this.password
-      })
+      });
+
+      // Resetar campos se quiser
+      // this.username = '';
+      // this.email = '';
+      // this.password = '';
+      // this.confirmPassword = '';
     }
   }
 }
 </script>
 
 <style scoped>
-.login-page {
+/* Apenas troquei nomes das classes para refletir a página de cadastro, mantendo o estilo igual */
+
+.register-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -88,7 +123,7 @@ export default {
   font-family: "Inter", sans-serif;
 }
 
-.login-container {
+.register-container {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -96,7 +131,7 @@ export default {
   padding: 2rem;
 }
 
-.login-box {
+.register-box {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
   padding: 2.5rem;
@@ -107,7 +142,7 @@ export default {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
-.login-title {
+.register-title {
   text-align: center;
   margin-bottom: 2rem;
   color: #fff;
@@ -116,7 +151,7 @@ export default {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.login-form {
+.register-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -153,7 +188,7 @@ export default {
   box-shadow: 0 0 0 3px rgba(179, 136, 255, 0.2);
 }
 
-.login-button {
+.register-button {
   background: linear-gradient(to right, #7c4dff, #b388ff);
   color: white;
   padding: 0.8rem;
@@ -168,29 +203,9 @@ export default {
   letter-spacing: 1px;
 }
 
-.login-button:hover {
+.register-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(179, 136, 255, 0.4);
-}
-
-.login-footer {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.login-footer a {
-  color: #b388ff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.login-footer a:hover {
-  color: #fff;
-  text-decoration: underline;
 }
 
 .backpage {
@@ -242,7 +257,7 @@ export default {
 .footer-copyright {
   color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
-} 
+}
 
 @media (max-width: 768px) {
   .logo {

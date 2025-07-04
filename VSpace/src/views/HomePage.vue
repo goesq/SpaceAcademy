@@ -17,7 +17,7 @@
           <img src="../assets/images/SpaceA.png" alt="Logo" class="footer-logo-img" />
         </div>
         <div class="footer-info">
-          <a href="mailto:contato@spaceademy.com" class="footer-email">contato@spaceademy.com</a>
+          <a href="mailto:contato@spaceademy.com" class="footer-email">contato@spaceacademy.com</a>
           <div class="footer-copyright">
             &copy; 2025 SpaceAcademy - Todos os direitos reservados.
           </div>
