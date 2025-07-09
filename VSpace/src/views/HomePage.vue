@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- Header original (não é navbar) -->
     <header class="header">
       <div class="logo-container">
         <img src="../assets/images/SpaceWhite.png" alt="Space Academy" class="logo" />

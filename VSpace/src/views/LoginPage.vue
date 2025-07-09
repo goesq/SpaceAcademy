@@ -13,7 +13,6 @@
               v-model="email"
               type="text"
               placeholder="Digite seu e-mail"
-              required
             />
           </div>
           
@@ -24,11 +23,11 @@
               v-model="password"
               type="password"
               placeholder="Digite sua senha"
-              required
             />
           </div>
           
           <button type="submit" class="login-button">Entrar</button>
+          <!-- Removi o required para visualização do front-end -->
         </form>
         
         <div class="login-footer">
@@ -36,21 +35,22 @@
         </div>
       </div>
     </div>
-      <router-link to="/" class="backpage"><strong>← Voltar</strong></router-link>
+    <router-link to="/" class="backpage"><strong>← Voltar</strong></router-link>
   </div>
+
   <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="../assets/images/SpaceA.png" alt="Logo" class="footer-logo-img" />
-        </div>
-        <div class="footer-info">
-          <a href="mailto:contato@spaceademy.com" class="footer-email">contato@spaceacademy.com</a>
-          <div class="footer-copyright">
-            &copy; 2025 SpaceAcademy - Todos os direitos reservados.
-          </div>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="../assets/images/SpaceA.png" alt="Logo" class="footer-logo-img" />
+      </div>
+      <div class="footer-info">
+        <a href="mailto:contato@spaceademy.com" class="footer-email">contato@spaceacademy.com</a>
+        <div class="footer-copyright">
+          &copy; 2025 SpaceAcademy - Todos os direitos reservados.
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -63,16 +63,18 @@ export default {
   },
   data() {
     return {
-      username: '',
+      email: '',
       password: ''
     }
   },
   methods: {
     handleLogin() {
       console.log('Tentativa de login:', {
-        username: this.username,
+        email: this.email,
         password: this.password
-      })
+      });
+
+      this.$router.push('/principal'); 
     }
   }
 }
@@ -130,7 +132,7 @@ export default {
 
 .input-group label {
   font-weight: 500;
-  color: #b388ff; /* Roxo claro para contrastar com o fundo */
+  color: #b388ff;
 }
 
 .input-group input {
@@ -242,7 +244,7 @@ export default {
 .footer-copyright {
   color: rgba(255, 255, 255, 0.7);
   font-size: 12px;
-} 
+}
 
 @media (max-width: 768px) {
   .logo {
