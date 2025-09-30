@@ -1,6 +1,9 @@
 <template>
   <div class="principal-page">
     <NavbarComplete />
+      <h1 class="title">
+      Seja bem-vindo!
+  </h1>
   </div>
     <footer class="footer">
       <div class="footer-content">
@@ -34,6 +37,12 @@ export default {
   background: linear-gradient(to bottom, black, #3A0064);
   color: white;
   font-family: "Inter", sans-serif;
+}
+
+.title {
+  font-size: 5rem;
+  padding: 12px;
+  font-family: "Archivo Black", sans-serif;
 }
 
 .footer {
